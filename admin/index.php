@@ -1,4 +1,5 @@
-<?php include('config/dbcon.php') ?>
+
+<?php include('authentication.php') ?>
 <?php include('includes/header.php') ?>
 
 
