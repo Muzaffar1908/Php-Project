@@ -32,8 +32,9 @@ include('includes/header.php');?>
             <input type="password" name="password" placeholder="Enter Password"  required>
 
             <button type="submit" name="login_btn">Login</button>
+            
             <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
+              <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </div>
 
