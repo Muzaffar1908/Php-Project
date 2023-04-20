@@ -1,5 +1,5 @@
 <div class="nav-header">
-    <a href="index.html" class="brand-logo">
+    <a href="index.php" class="brand-logo">
         <h3 class="text-white">Admin</h3>
     </a>
     <div class="nav-control">
@@ -19,7 +19,6 @@
             <div class="dlab-side-menu">
                 <div class="search-coundry d-flex align-items-center"></div>
                 <ul>
-                 <?php if(isset($_SESSION['auth_user'])) : ?>   
                     <li class="nav-item dropdown header-profile">
                         <a
                         class="nav-link"
@@ -79,7 +78,7 @@
                             <span class="ms-2">Inbox </span>
                         </a>
                         <a
-                            href="logout.php"
+                            href="../../index.php"
                             class="dropdown-item ai-icon"
                         >
                             <svg
@@ -100,13 +99,10 @@
                             <polyline points="16 17 21 12 16 7"></polyline>
                             <line x1="21" y1="12" x2="9" y2="12"></line>
                             </svg>
-                            <form action="allcode.php" method="POST">
                                 <span class="ms-2" name="logout_btn">Logout </span>
-                            </form>
                         </a>
                         </div>
                     </li>
-                <?php endif; ?> 
                 <li class="nav-item mt-4">
                     <div class="search-coundry d-flex align-items-center">
                     <img src="images/United.png" alt="" />

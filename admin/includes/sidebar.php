@@ -2,13 +2,24 @@
     <div class="dlabnav-scroll">
         <ul class="metismenu" id="menu">
             <li>
+              <a
+                class=""
+                href="index.php"
+                aria-expanded="false"
+              >
+                <i class="bi bi-grid"></i>
+
+                <span class="nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li>
                 <a
                 class="has-arrow"
                 href="javascript:void(0);"
                 aria-expanded="false"
                 >
-                <i class="bi bi-grid"></i>
-                <span class="nav-text">Dashboard</span>
+                <i class="bi bi-people"></i>
+                <span class="nav-text">Users</span>
                 </a>
                 <ul aria-expanded="false">
                   <li><a href="view-register.php">Register View</a></li>
@@ -35,11 +46,11 @@
                 aria-expanded="false"
               >
                 <i class="bi bi-stickies"></i>
-                <span class="nav-text">Posts</span>
+                <span class="nav-text">Products</span>
               </a>
               <ul aria-expanded="false">
-                <li><a href="create-post.php">Post Add</a></li>
-                <li><a href="view-post.php">Post View</a></li>
+                <li><a href="create-product.php">Product Add</a></li>
+                <li><a href="view-product.php">Product View</a></li>
               </ul>
             </li> 
         </ul>

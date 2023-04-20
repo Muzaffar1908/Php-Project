@@ -7,27 +7,29 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Users</h4>
-                        <a href="create-register.php" class="btn btn-success">Create User</a>
+                        <h4 class="card-title">Product</h4>
+                        <a href="create-product.php" class="btn btn-success">Create Product</a>
                     </div>
                     <div class="card-body">
-                        
+
+                      <?php include('message.php') ?>
+
                         <div class="table-responsive">
                             <table class="table primary-table-bordered">
                                 <thead class="thead-primary">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Roles</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Edit</th>
                                         <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $query = "SELECT * FROM users";
+                                        $query = "SELECT p.*, c.name AS cname FROM products p, categories c WHERE c.id = p.category_id";
                                         $query_run = mysqli_query($conn, $query);
                                         
                                         if(mysqli_num_rows($query_run) > 0)
@@ -37,25 +39,14 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $row['id']?></td>
-                                                    <td><?= $row['fname']?></td>
-                                                    <td><?= $row['lname']?></td>
-                                                    <td><?= $row['email']?></td>
-                                                    <td>
-                                                        <?php
-                                                        if($row['role_as'] == '1')
-                                                        {
-                                                            echo 'Admin';
-                                                        }
-                                                        elseif($row['role_as'] == '0')
-                                                        {
-                                                            echo 'User';
-                                                        }
-                                                        ?>
-                                                    </td>
-                                                    <td><a href="edit-register.php?id=<?= $row['id']?>" class="btn btn-success">Edit</a></td>
+                                                    <td><?= $row['name']?></td>
+                                                    <td><?= $row['cname']?></td>
+                                                    <td><img src="../upload/product_image/<?= $row['image']?>" width="60px" height="60px"></td>
+                                                    <td><?= $row['status'] == '1' ? 'hidden' : 'visible' ?></td>
+                                                    <td><a href="edit-product.php?id=<?= $row['id'];?>" class="btn btn-success">Edit</a></td>
                                                     <td>
                                                         <form action="code.php" method="POST">
-                                                            <button type="submit" class="btn btn-danger" name="user_delete" value="<?= $row['id'] ?>">Delete</button>
+                                                            <button type="submit" class="btn btn-danger" name="product_delete" value="<?= $row['id'] ?>">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
