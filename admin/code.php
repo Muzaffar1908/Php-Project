@@ -1,5 +1,87 @@
 <?php include('authentication.php');
 
+if(isset($_POST['report_delete']))
+{
+    $report_id = $_POST['report_delete'];
+
+    $check_img_query = "SELECT * FROM products WHERE id = '$category_id' LIMIT 1";
+    $img_res = mysqli_query($conn, $check_img_query);
+    $res_data = mysqli_fetch_array( $img_res);
+    $image = $res_data['image'];
+
+    $query = "DELETE FROM reports WHERE id = '$report_id' LIMIT 1";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'Report Deleted Successfully';
+        header('Location: view-report.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-report.php');
+        exit(0);
+    }
+}
+
+if(isset($_POST['update_report']))
+{
+    $report_id = $_POST['report_id'];
+
+    $product_id = $_POST['product_id'];
+
+    $enter_date = $_POST['enter_date'];
+    $out_date = $_POST['out_date'];
+    $quantity = $_POST['quantity'];
+
+    $query = "UPDATE reports SET product_id = '$product_id', enter_date = '$enter_date', out_date = '$out_date', quantity = '$quantity' WHERE id = '$product_id'";
+
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'Report Updated Successfully';
+        header('Location: view-report.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-report.php');
+        exit(0);
+    }             
+
+}
+
+if(isset($_POST['add_report']))
+{
+    $product_id = $_POST['product_id'];
+
+    $enter_date = $_POST['enter_date'];
+    $out_date = $_POST['out_date'];
+    $quantity = $_POST['quantity'];
+
+    $query = "INSERT INTO reports(product_id, enter_date, out_date, quantity)
+            VALUES ('$product_id', '$enter_date', '$out_date', '$quantity')";
+
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'Report Created Successfully';
+        header('Location: view-report.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-report.php');
+        exit(0);
+    }                      
+}
+
 if(isset($_POST['product_delete']))
 {
     $product_id = $_POST['product_delete'];

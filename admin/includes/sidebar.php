@@ -52,6 +52,19 @@
                 <li><a href="create-product.php">Product Add</a></li>
                 <li><a href="view-product.php">Product View</a></li>
               </ul>
+            </li>
+            <li>
+              <a
+                class="has-arrow"
+                href="javascript:void(0);"
+                aria-expanded="false"
+              >
+                <i class="bi bi-book"></i>
+                <span class="nav-text">Reports</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href="view-report.php">Report</a></li>
+              </ul>
             </li> 
         </ul>
     </div>
