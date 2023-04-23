@@ -1,5 +1,158 @@
 <?php include('authentication.php');
 
+if(isset($_POST['wms_delete']))
+{
+    $wms_id = $_POSR['wms_id'];
+
+    // 2 = delete
+    $query = "UPDATE wms SET status = '2' WHERE id = '$wms_id' LIMIT 1";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'WMS Deleted Successfully';
+        header('Location: view-wms.php ');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-wms.php');
+        exit(0);
+    }
+}
+
+if(isset($_POST['update_wms']))
+{
+    $wms_id = $_POSR['wms_id'];
+    $organization_id = $_POST['organization_id'];
+    $date = $_POST['date'];
+    $quantity = $_POST['quantity'];
+    $category_id = $_POST['category_id'];
+    $product_id = $_POST['product_id'];
+    $inventory = $_POST['inventory'];
+    $status = $_POST['status'] == true ? '1' : '0';
+
+    $query = "UPDATE wms SET organization_id = '$organization_id', date = '$date', quantity = '$quantity',
+            category_id = '$category_id', product_id = '$product_id', inventory = '$inventory', status = '$status'";
+
+    $query_run = mysqli_query($conn, $query);
+        
+    if($query_run)
+    {
+        $_SESSION['message'] = 'WMS Updated Successfully';
+        header('Location: view-wms.php ');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-wms.php');
+        exit(0);
+    }        
+}
+
+if(isset($_POST['add_wms']))
+{
+    $organization_id = $_POST['organization_id'];
+    $date = $_POST['date'];
+    $quantity = $_POST['quantity'];
+    $category_id = $_POST['category_id'];
+    $product_id = $_POST['product_id'];
+    $inventory = $_POST['inventory'];
+    $status = $_POST['status'] == true ? '1' : '0';
+
+    $query = "INSERT INTO wms (organization_id, date, quantity, category_id, product_id, inventory, status)
+             VALUES ('$organization_id', '$date', '$quantity', '$category_id', '$product_id', '$inventory', '$status')";
+
+    $query_run = mysqli_query($conn, $query);
+    
+    if($query_run)
+    {
+        $_SESSION['message'] = 'WMS Created Successfully';
+        header('Location: view-wms.php ');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-wms.php');
+        exit(0);
+    }
+
+}
+
+if(isset($_POST['organization_delete']))
+{
+    $organization_id = $_POST['organization_delete'];
+
+    // 2 = delete
+    $query = "UPDATE organizations SET status = '2' WHERE id = '$organization_id' LIMIT 1";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'Organization Deleted Successfully';
+        header('Location: view-organization.php ');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-organization.php');
+        exit(0);
+    }
+}
+
+if(isset($_POST['update_organization']))
+{
+    $organization_id = $_POST['organization_id'];
+    $name = $_POST['name'];
+    $status = $_POST['status'] == true ? '1' : '0';
+
+    $query = "UPDATE organizations SET name = '$name', status = '$status' WHERE id = '$organization_id'";
+
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'Organization Updated Successfully';
+        header('Location: view-organization.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-organization.php');
+        exit(0);
+    }
+
+
+}
+
+if(isset($_POST['add_organization']))
+{
+    $name = $_POST['name'];
+    $status = $_POST['status'] == true ? '1' : '0';
+
+    $query = "INSERT INTO organizations (name, status) VALUES ('$name', '$status')";
+
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = 'Organization Created Successfully';
+        header('Location: view-organization.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = 'Something Went Wrong';
+        header('Location: view-organization.php');
+        exit(0);
+    }
+}
+
 if(isset($_POST['report_delete']))
 {
     $report_id = $_POST['report_delete'];

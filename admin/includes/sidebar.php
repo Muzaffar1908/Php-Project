@@ -65,6 +65,32 @@
               <ul aria-expanded="false">
                 <li><a href="view-report.php">Report</a></li>
               </ul>
+            </li>
+            <li>
+              <a
+                class="has-arrow"
+                href="javascript:void(0);"
+                aria-expanded="false"
+              >
+                <i class="bi bi-stickies"></i>
+                <span class="nav-text">Organizations</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href="view-organization.php">Organization View</a></li>
+              </ul>
+            </li>
+            <li>
+              <a
+                class="has-arrow"
+                href="javascript:void(0);"
+                aria-expanded="false"
+              >
+                <i class="bi bi-book"></i>
+                <span class="nav-text">WMS</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href="view-wms.php">WMS</a></li>
+              </ul>
             </li> 
         </ul>
     </div>
